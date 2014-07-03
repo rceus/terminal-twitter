@@ -55,7 +55,16 @@ class Terminaltwitter
 	end
 	#Unfollow a person
 	def unfollow_name
-		print("Enter the name to unfollow: ")
+		client = Twitter::REST::Client.new do |config|
+			config.consumer_key = $ckey
+			config.consumer_secret = $csecret
+			config.access_token = $atoken
+			config.access_token_secret = $asecret
+		end
+		print("Enter the username to unfollow: ")
+		user_unfollow=gets().chomp
+		client.unfollow(user_unfollow)
+		puts(user_unfollow + " unfollowed")
 	end
 	#Revenge: Unfollow people who did not follow you back	
 	def revenge
@@ -73,10 +82,8 @@ class Terminaltwitter
 		arr=0..count
 		badpeople.each do |arr|
 			puts(arr.name)
-			#Twitter::unfollow(arr)
+			client.unfollow(arr)
 		end
-		#puts(client.friends.count)
-		#puts(client.followers.count)		
 	end
 end
 
