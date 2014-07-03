@@ -82,7 +82,24 @@ class Terminaltwitter
 		arr=0..count
 		badpeople.each do |arr|
 			puts(arr.name)
+			uname = arr.name
 			client.unfollow(arr)
+			puts(uname + ' has been unfollowed.')
+		end
+	end
+	#TimelineTweets
+	def timeline_tweets
+		client = Twitter::REST::Client.new do |config|
+			config.consumer_key = $ckey
+			config.consumer_secret = $csecret
+			config.access_token = $atoken
+			config.access_token_secret = $asecret
+		end
+		timelineTweets = client.home_timeline
+		timelineTweets.each do |arr|
+			puts(arr.text)
+			puts()
+			sleep(3)
 		end
 	end
 end
@@ -92,4 +109,5 @@ end
 tweeter = Terminaltwitter.new
 tweeter.o_auth
 tweeter.options
-tweeter.revenge
+tweeter.timeline_tweets
+#tweeter.revenge
