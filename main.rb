@@ -15,6 +15,7 @@ class Terminaltwitter
 		$atoken = gets().chomp
 		print("Enter Access Token Secret: ")
 		$asecret = gets().chomp
+		
 		#my_keys
 		$ckey='gTfHpoDtJOg61HvT8OA0N8q28'
 		$csecret='a23gfGTukB24pXhjFoo5dHjYHjDfXQaDeN1cmn1dJPyeVvgg4A'
@@ -31,6 +32,7 @@ class Terminaltwitter
 		puts('4 - Timeline Feed')
 		puts('5 - See who did not follow you back')
 		$choice=gets.chomp
+		$tweeter.options_choice
 	end
 	#Tweet Function
 	def tweetself
@@ -45,13 +47,21 @@ class Terminaltwitter
 		tweet=tweet.chomp
 		client.update(tweet)
 		puts("Tweeted!")
+		options
 	end
 	#Follow a person
 	def follow_name
+		client = Twitter::REST::Client.new do |config|
+			config.consumer_key = $ckey
+			config.consumer_secret = $csecret
+			config.access_token = $atoken
+			config.access_token_secret = $asecret
+		end
 		print("Enter username to follow: ")
 		to_follow = gets()
 		to_follow = to_follow.chomp
-		client.follow(to_follow)	
+		client.follow(to_follow)
+		options	
 	end
 	#Unfollow a person
 	def unfollow_name
@@ -101,13 +111,35 @@ class Terminaltwitter
 			puts()
 			sleep(3)
 		end
+		puts()
+		puts()
+		options
+	end
+
+	def end_tt
+		puts()
+		puts('Thanks for using Terminal Twitter')
+	end
+
+	def options_choice
+		if $choice=='1'
+			$tweeter.tweetself
+		elsif $choice=='2'
+			$tweeter.follow_name
+		elsif $choice=='3'
+			$tweeter.unfollow_name
+		elsif $choice=='4'	
+			$tweeter.timeline_tweets
+		elsif $choice=='5'
+			$tweeter.revenge
+		else
+			puts('Wrong Choice. Aborted, start again.')
+		end
 	end
 end
 
 
 
-tweeter = Terminaltwitter.new
-tweeter.o_auth
-tweeter.options
-tweeter.timeline_tweets
-#tweeter.revenge
+$tweeter = Terminaltwitter.new
+$tweeter.o_auth
+$tweeter.options
