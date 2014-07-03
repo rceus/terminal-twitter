@@ -3,7 +3,7 @@ require 'twitter'
 class Terminaltwitter
 	#authentication
 	def o_auth
-		print('Welcome to TerminalTwitter!')
+		puts('Welcome to TerminalTwitter!')
 		gets()
 		puts("You will need to get keys and secrets to access this application. Available on https://dev.twitter.com/")
 		gets()
@@ -20,6 +20,17 @@ class Terminaltwitter
 		$csecret='a23gfGTukB24pXhjFoo5dHjYHjDfXQaDeN1cmn1dJPyeVvgg4A'
 		$atoken='1266814304-ZPf6Hti2lyi0JErbKZF0x196n894AamPejy7JEP'
 		$asecret='e9K2RQtbZKSxNvKoDugslInRmM4kdmatZUJV7x4uvuKH1'
+	end
+	#display
+	def options
+		puts()
+		puts('Select the operation: ')
+		puts('1 - Tweet!')
+		puts('2 - Follow a person')
+		puts('3 - Unfollow a person')
+		puts('4 - Timeline Feed')
+		puts('5 - See who did not follow you back')
+		$choice=gets.chomp
 	end
 	#Tweet Function
 	def tweetself
@@ -73,4 +84,5 @@ end
 
 tweeter = Terminaltwitter.new
 tweeter.o_auth
+tweeter.options
 tweeter.revenge
