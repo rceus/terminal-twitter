@@ -10,6 +10,19 @@ Developed by Rishabh Jain.
 Terminal Twitter is a terminal application that accesses Twitter and lets you do operations through terminal.
 These include some basic operations such as tweet, follow or unfollow people and some self created operations.
 
+The current operations include:
+
+1) Tweet
+
+2) Follow
+
+3) Unfollow
+
+4) Get timeline tweets
+
+5) Unfollow all the people who did not follow you back 
+
+
 Instructions (for those who are new to ruby):
 
 1) To install ruby you can consult https://rvm.io/rvm/install. 

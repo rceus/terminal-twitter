@@ -16,7 +16,7 @@ class Terminaltwitter
 		print("Enter Access Token Secret: ")
 		$asecret = gets().chomp
 		
-		#my_keys
+		#default keys
 		$ckey='gTfHpoDtJOg61HvT8OA0N8q28'
 		$csecret='a23gfGTukB24pXhjFoo5dHjYHjDfXQaDeN1cmn1dJPyeVvgg4A'
 		$atoken='1266814304-ZPf6Hti2lyi0JErbKZF0x196n894AamPejy7JEP'
@@ -61,6 +61,7 @@ class Terminaltwitter
 		to_follow = gets()
 		to_follow = to_follow.chomp
 		client.follow(to_follow)
+		puts(to_follow+" followed.")
 		options	
 	end
 	#Unfollow a person
@@ -75,6 +76,7 @@ class Terminaltwitter
 		user_unfollow=gets().chomp
 		client.unfollow(user_unfollow)
 		puts(user_unfollow + " unfollowed.")
+		options
 	end
 	#Revenge: Unfollow people who did not follow you back	
 	def revenge
@@ -96,6 +98,7 @@ class Terminaltwitter
 			client.unfollow(arr)
 			puts(uname + ' has been unfollowed.')
 		end
+		options
 	end
 	#TimelineTweets
 	def timeline_tweets
