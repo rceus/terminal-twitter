@@ -9,6 +9,7 @@ Developed by Rishabh Jain.
 
 Terminal Twitter is a terminal application that accesses Twitter and lets you do operations through terminal.
 These include some basic operations such as tweet, follow or unfollow people and some self created operations.
+It also includes a version that supports text to speech. ie: it will help people with visual disabilities to easily key in the details without having them to worry about reading the contents. The program will assist them by speaking out all the information.
 
 The current operations include:
 
